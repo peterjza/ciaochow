@@ -7,6 +7,7 @@ import { register } from '@/app/actions/register';
 import { FormSuccess } from './form-success';
 import { FormError } from './form-error';
 import Button from '../ui/button';
+import PasswordInput from '../ui/passwordInput';
 
 export const RegisterForm = () => {
 	const [success, setSuccess] = useState<string | undefined>('');
@@ -40,7 +41,7 @@ export const RegisterForm = () => {
 			</div>
 
 			<form action={async formData => onSubmit(formData)}>
-				<div>
+				<div className='mb-4'>
 					<label
 						htmlFor='username'
 						className='block text-base font-medium text-gray-dark'
@@ -56,7 +57,7 @@ export const RegisterForm = () => {
 					/>
 				</div>
 
-				<div>
+				<div className='mb-4'>
 					<label
 						htmlFor='email'
 						className='block text-base font-medium text-gray-dark'
@@ -72,29 +73,24 @@ export const RegisterForm = () => {
 					/>
 				</div>
 
-				<div>
-					<label
-						htmlFor='password'
-						className='block text-base font-medium text-gray-dark'
-					>
-						password
-					</label>
-					<input
-						type='password'
-						id='password'
-						name='password'
-						placeholder='your password'
-						className='mt-1 p-3 rounded-md w-full bg-greyLight text-gray border-0'
-					/>
+				<div className='mb-4'>
+					<PasswordInput />
 				</div>
 
-				<Button className='bg-chow text-white mt-9 px-32 py-3 text-lg'>
-					<div>register</div>
+				<Button className='bg-chow text-white mt-4 px-32 py-3 text-lg w-full'>
+					<div>Register</div>
 				</Button>
 			</form>
-			<span>
-				Have an account? <Link href='/login'>Login</Link>
-			</span>
+			<p className='text-center mt-8 text-chow  text-[12px]'>
+				Have an account?{' '}
+				<Link
+					href='/login'
+					className='font-bold
+				'
+				>
+					Login
+				</Link>
+			</p>
 			<FormSuccess message={success} />
 			<FormError message={error} />
 		</>
