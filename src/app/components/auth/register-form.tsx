@@ -18,7 +18,6 @@ export const RegisterForm = () => {
 		setError('');
 
 		startTransition(async () => {
-			debugger;
 			const data = await register(formData);
 			setError(data.error?.message);
 			setSuccess(data.success?.username);
@@ -31,7 +30,7 @@ export const RegisterForm = () => {
 				Register
 			</h1>
 
-			<div className='flex flex-row justify-end mt-8 mr-6'>
+			<div className='flex flex-row justify-end mt-6 mr-6'>
 				<Image
 					src='/ciao_bodyType1.svg'
 					width={129}
@@ -78,10 +77,12 @@ export const RegisterForm = () => {
 				</div>
 
 				<Button className='bg-chow text-white mt-4 px-32 py-3 text-lg w-full'>
-					<div>Register</div>
+					<div className='w-full'>Register</div>
 				</Button>
 			</form>
-			<p className='text-center mt-8 text-chow  text-[12px]'>
+			<FormSuccess message={success} />
+			<FormError message={error} />
+			<p className='text-center mt-8 mb-4 text-chow text-[12px]'>
 				Have an account?{' '}
 				<Link
 					href='/login'
@@ -91,8 +92,6 @@ export const RegisterForm = () => {
 					Login
 				</Link>
 			</p>
-			<FormSuccess message={success} />
-			<FormError message={error} />
 		</>
 	);
 };

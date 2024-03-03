@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { getChows } from '@/app/actions/chows';
-import ChowsSkeleton from '@/app/components/chowsSkeleton';
 import ChowsSection from '@/app/components/chowsSection';
+import { Puff } from 'react-loading-icons';
+import Button from '@/app/components/ui/button';
 
 type ChowsData = {
 	id: number;
@@ -15,15 +17,6 @@ type ChowsData = {
 		publishedAt: string;
 		updatedAt: string;
 	};
-};
-
-const SkeletonComponent: React.FC = () => {
-	// You can customize your loading skeleton here
-	return (
-		<div className='skeleton'>
-			<p>Loading...</p>
-		</div>
-	);
 };
 
 const ChowsPage = () => {
@@ -56,14 +49,19 @@ const ChowsPage = () => {
 	return (
 		<div>
 			{loading ? (
-				<ChowsSkeleton />
+				<div className='flex items-center justify-center bg-chow h-screen'>
+					<Puff stroke='#fff' />
+				</div>
 			) : selectedItem ? (
 				<ChowsSection
 					title={selectedItem.attributes.Title}
+					description={selectedItem.attributes.Description}
 					onButtonClick={handleButtonClick}
 				/>
 			) : (
-				<p>No matching item found</p>
+				<div className='flex flex-col  items-center justify-center bg-chow h-screen'>
+					<h1 className='text-white text-3xl'>Fin</h1>
+				</div>
 			)}
 		</div>
 	);
