@@ -1,16 +1,16 @@
-import { BiError } from 'react-icons/bi';
+import { BiError } from "react-icons/bi";
 
 interface FormErrorProps {
-	message?: string;
+  message?: string;
 }
 
 export const FormError = ({ message }: FormErrorProps) => {
-	if (!message) return null;
+  if (!message) return null;
 
-	return (
-		<div className='bg-destructive/15 p-3 rounded-md flex items-center gap-x-2 text-sm text-red-500'>
-			<BiError className='text-red-500 text-xl' />
-			<p>{message}</p>
-		</div>
-	);
+  return (
+    <div className="bg-destructive/15 p-3 rounded-md flex items-center gap-x-2 text-sm text-red-500">
+      <BiError className="text-red-500 text-xl" />
+      <p>{message}</p>
+    </div>
+  );
 };

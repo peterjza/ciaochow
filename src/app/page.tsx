@@ -1,7 +1,7 @@
-import { WelcomeBlurb } from '@/app/components/welcome';
+import { WelcomeBlurb } from "@/app/components/welcome";
 
 const WelcomePage = () => {
-	return <WelcomeBlurb />;
+  return <WelcomeBlurb />;
 };
 
 export default WelcomePage;
